@@ -1,0 +1,2 @@
+rootProject.name='Cronberry FCM Demo'
+include ':app'
