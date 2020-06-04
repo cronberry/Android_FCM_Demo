@@ -3,6 +3,7 @@ package com.cronberry.cronberryfcmdemo
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -28,12 +29,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("arnish", "intent")
-        Log.d("arnish", "intent.extras.dfasd")
+        Log.d("cronberry", "intent")
+        Log.d("cronberry", "intent.extras.dfasd")
         if (null != intent.extras) {
             if (intent.extras!!.containsKey("actionURL")) {
                 val url = intent.extras!!.getString("actionURL")
-                Log.d("arnish", "intent.extras.toString()")
+                Log.d("cronberry", "intent.extras.toString()")
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 startActivity(Intent.createChooser(intent, "Browse with"))
                 finish()
@@ -68,17 +69,20 @@ class MainActivity : AppCompatActivity() {
                             progressBar.visibility = View.GONE
                             Toast.makeText(this@MainActivity, "No token found", Toast.LENGTH_SHORT)
                                 .show()
-                            Log.d("arnish", "no token found")
+                            Log.d("cronberry", "no token found")
                             return
                         }
 
                         val refreshedToken = task.result!!.token
-                        Log.d("arnish", "NEw Token: ")
-                        Log.d("arnish", "Token: $refreshedToken")
+                        Log.d("cronberry", "NEw Token: ")
+                        Log.d("cronberry", "Token: $refreshedToken")
                         val retrofitObj = Utility.getRetrofitObj(this@MainActivity)
                         val hashMap = HashMap<String, Any>()
                         hashMap["projectKey"] = "VW50aXRsZSBQcm9qZWN0MTU5MDc1OTQ2NDgzNA=="
-                        hashMap["audienceId"] = System.currentTimeMillis().toString()
+                        hashMap["audienceId"] = Settings.Secure.getString(
+                            this@MainActivity.applicationContext.contentResolver,
+                            Settings.Secure.ANDROID_ID
+                        ).toString()
                         hashMap["android_fcm_token"] = refreshedToken
                         val paramList = ArrayList<HashMap<String, Any>>()
                         val dataMap = HashMap<String, Any>()
@@ -128,8 +132,8 @@ class MainActivity : AppCompatActivity() {
                                 }
 
                             })
-                        Log.d("arnish", " token found")
-                        Log.d("arnish", refreshedToken)
+                        Log.d("cronberry", " token found")
+                        Log.d("cronberry", refreshedToken)
                     }
                 })
         }

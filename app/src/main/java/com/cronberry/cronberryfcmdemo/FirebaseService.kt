@@ -31,7 +31,7 @@ class FirebaseService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
-        Log.d("arnish", "Notiicaiton")
+        Log.d("cronberry", "Notiicaiton")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             sendOreoPushNotification(remoteMessage)
         } else {
@@ -151,7 +151,7 @@ class FirebaseService : FirebaseMessagingService() {
     private fun sendOreoPushNotification(remoteMessage: RemoteMessage) {
         if (!isAppIsInBackground(applicationContext)) {
             //foreground app
-            Log.d("arnish", "backound ot")
+            Log.d("cronberry", "backound ot")
             Log.e("remoteMessage", remoteMessage.data.toString())
             val title = "Hello " + remoteMessage.notification!!.title
             val body = remoteMessage.notification!!.body
@@ -190,7 +190,7 @@ class FirebaseService : FirebaseMessagingService() {
             }
             oreoNotification.manager!!.notify(i, builder.build())
         } else {
-            Log.d("arnish", "backound yes")
+            Log.d("cronberry", "backound yes")
             Log.e("remoteMessage", remoteMessage.data.toString())
             val title = remoteMessage.data["title"]
             val body = remoteMessage.data["body"]
@@ -233,7 +233,7 @@ class FirebaseService : FirebaseMessagingService() {
 
     private fun getBitmapFromURL(strURL: Uri?): Bitmap? {
         return try {
-            Log.d("arnish", "URL: " + strURL.toString())
+            Log.d("cronberry", "URL: " + strURL.toString())
             val url = URL(strURL.toString())
             val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
             connection.doInput = true
