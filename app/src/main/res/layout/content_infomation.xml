@@ -9,11 +9,26 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textSize="20dp"
-        android:text="Now you are ready for \n Test Push Notification"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:text="Follow below steps to test the notification.\n\n
+1.	Login on cronberry portal with given user.\n\n
+
+2.	Create a campaign-> Select Fresh Audience-> Attributes.\n\n
+
+3.	From Attributes list, select ‘demo email’ and enter your email id in filter.\n\n
+
+4.	Click on proceed and create an android push campaign.\n\n
+
+5.	Close current app and in a minute, you will recive the notification with given image, link, icon.\n
+
+
+
+"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +38,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cronberry"
+        android:text="Welcome To Cronberry"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"

@@ -1,6 +1,7 @@
 package com.cronberry.cronberryfcmdemo
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -27,7 +28,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.d("arnish", "intent")
+        Log.d("arnish", "intent.extras.dfasd")
+        if (null != intent.extras) {
+            if (intent.extras!!.containsKey("actionURL")) {
+                val url = intent.extras!!.getString("actionURL")
+                Log.d("arnish", "intent.extras.toString()")
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(Intent.createChooser(intent, "Browse with"))
+                finish()
+                return
+            }
+        }
         myPref = CronberryPref(this)
         if (myPref.userEmailPref != "") {
             openSecondActivity()
