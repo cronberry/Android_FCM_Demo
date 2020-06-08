@@ -8,9 +8,11 @@ suport/demostrate below features :--
 1. Support All Android Version 4.1 + (API Level 16)
 
 2. Handles Notification title, body, image and action URL in all below states of the host application.
-
+  
   a. App in ForeGround.
+  
   b. App in BackGround.
+  
   c. App Not open and not in background.
   
 3. Uses this ActionUrl for either website link routing or for calling some activity of your android app.
